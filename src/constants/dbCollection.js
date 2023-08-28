@@ -1,0 +1,11 @@
+export const NOTIFICATION = "Notification";
+export const COMMENT = "Comment";
+export const ROLE = "Role";
+export const USER = "User";
+export const BLOG = "blog";
+export const RESOURCE = "Resource";
+export const RATE = "Rate";
+export const GROUP = "Group";
+export const CONFIG = "Config";
+export const NEWS = "New";
+export const NEWS_CATEGORY = "NewCategory";
