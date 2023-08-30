@@ -63,7 +63,10 @@ export default {
         await sendEmail(mailOptions);
       }
 
-      return res.json(user);
+      delete user.password;
+
+      const token = await jwtHelper.generateToken(user, accessTokenSecret, accessTokenLife);
+      return res.json({ token, ...user });
     } catch (err) {
       return res.status(500).send(err);
     }
@@ -130,7 +133,7 @@ export default {
       const user = await User.findOne({
         username: value.username,
         is_deleted: false,
-      });
+      }).lean();
       if (!user) {
         return res.status(401).json({
           success: false,
@@ -146,8 +149,10 @@ export default {
             message: "Tài khoản đã tạm khóa, vui lòng liên hệ quản trị viên.",
           });
         }
+        delete user.password;
+
         const token = await jwtHelper.generateToken(user, accessTokenSecret, accessTokenLife);
-        return res.json({ token });
+        return res.json({ token, ...user });
       }
       return res.status(401).json({
         success: false,
