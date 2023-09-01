@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import { BLOG, USER, GROUP } from "../../constants/dbCollection";
+import { ARTICLE, USER, GROUP } from "../../constants/dbCollection";
 
 const { Schema } = mongoose;
 const schema = new Schema(
@@ -28,4 +28,4 @@ const schema = new Schema(
 
 schema.plugin(mongoosePaginate);
 
-export default mongoose.model(BLOG, schema);
+export default mongoose.model(ARTICLE, schema);

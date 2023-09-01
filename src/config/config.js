@@ -3,7 +3,7 @@ const DEFAULT_DB_URI = "mongodb://thangdz:thang18cm@localhost:27017/bloggo?authS
 const config = {
   production: {
     host_admin: "http://localhost:4200",
-    secret: "BLOGGO135104",
+    secret: "ARTICLEGO135104",
     username_admin: "sysadmin",
     name_admin: "Bloggo",
     phone_admin: "0364448661",
@@ -34,7 +34,7 @@ const config = {
     phone_admin: "0364448661",
     email_admin: "duythang135104@gmail.com",
     main_folder: "src",
-    secret: "BLOGGO135104",
+    secret: "ARTICLEGO135104",
     MONGO_URI: "mongodb://thangdz:thang18cm@localhost:27017/bloggo?authSource=admin",
     port: 27017,
     mail: {

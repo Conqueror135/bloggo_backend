@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import { BLOG, RATE, USER } from "../../constants/dbCollection";
+import { ARTICLE, RATE, USER } from "../../constants/dbCollection";
 
 const { Schema } = mongoose;
 const schema = new Schema(
   {
     name: { type: String },
     type: { type: String },
-    blog: { ref: BLOG, type: mongoose.Schema.Types.ObjectId },
+    article: { ref: ARTICLE, type: mongoose.Schema.Types.ObjectId },
     user: { ref: USER, type: mongoose.Schema.Types.ObjectId },
     is_deleted: { type: Boolean, default: false, select: false },
     active: { type: Boolean, default: true },

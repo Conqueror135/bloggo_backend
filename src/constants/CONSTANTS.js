@@ -2,7 +2,7 @@ export const ROLES = {
   ADMIN: "admin",
   MEMBER: "member",
 };
-export const BLOG_STATUS = {
+export const ARTICLE_STATUS = {
   DRAFT: "DRAFT",
   PUBLISHED: "PUBLISHED",
 };

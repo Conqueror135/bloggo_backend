@@ -1,14 +1,14 @@
 import mongoose, { Schema } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 import { STATUS_COMMENT } from "../../constants/CONSTANTS";
-import { COMMENT, BLOG, USER } from "../../constants/dbCollection";
+import { COMMENT, ARTICLE, USER } from "../../constants/dbCollection";
 
 const CommentSchema = new Schema(
   {
     content: { type: String },
     status: { type: String, default: STATUS_COMMENT.PENDING.status },
     user: { type: Schema.Types.ObjectId, ref: USER, required: true },
-    blog: { type: Schema.Types.ObjectId, ref: BLOG, required: true },
+    article: { type: Schema.Types.ObjectId, ref: ARTICLE, required: true },
     is_deleted: { type: Boolean, default: false, select: false },
     active: { type: Boolean, default: false },
   },

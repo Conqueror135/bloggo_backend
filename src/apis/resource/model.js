@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import { BLOG, RESOURCE } from "../../constants/dbCollection";
+import { ARTICLE, RESOURCE } from "../../constants/dbCollection";
 
 const { Schema } = mongoose;
 const schema = new Schema(
@@ -9,7 +9,7 @@ const schema = new Schema(
     file_name: { type: String },
     url: { type: String },
     type: { type: String },
-    blog: { ref: BLOG, type: mongoose.Schema.Types.ObjectId },
+    article: { ref: ARTICLE, type: mongoose.Schema.Types.ObjectId },
     is_deleted: { type: Boolean, default: false, select: false },
     active: { type: Boolean, default: true },
   },

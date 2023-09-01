@@ -10,14 +10,14 @@ import commentRouter from "./comment/router";
 import configRouter from "./config/router";
 import newsRouter from "./news/router";
 import newsCategoryRouter from "./newCategory/router";
-import blogRouter from "./blog/router";
+import articleRouter from "./article/router";
 
 const restRouter = express.Router();
 
 restRouter.use("/users", userRouter);
 restRouter.use("/files", imgUploadRouter);
 restRouter.use("/notification", notificationRouter);
-restRouter.use("/blog", blogRouter);
+restRouter.use("/articles", articleRouter);
 restRouter.use("/roles", rolesRouter);
 restRouter.use("/group", groupRouter);
 restRouter.use("/rate", rateRouter);

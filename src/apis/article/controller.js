@@ -4,15 +4,12 @@ import * as controllerHelper from "../../helpers/controllerHelper";
 import { filterRequest, optionsRequest } from "../../utils/filterRequest";
 import * as responseHelper from "../../helpers/responseHelper";
 import Resource from "../resource/model";
-import { BLOG_STATUS } from "../../constants/CONSTANTS";
+import { ARTICLE_STATUS } from "../../constants/CONSTANTS";
 import CommonError from "../../error/CommonError";
 import { groupBy, extractObjectIds } from "../../utils/dataConverter";
 
 export default {
-  findOne: controllerHelper.createFindOneFunction(Model, [
-    { path: "user", select: "fullname username phone email" },
-    { path: "group", select: "name" },
-  ]),
+  findOne: controllerHelper.createFindOneFunction(Model, [{ path: "user", select: "fullname username phone email" }]),
 
   getAll: async (req, res) => {
     try {
@@ -27,7 +24,7 @@ export default {
         { path: "group", select: "name" },
       ];
       if (!query.status) {
-        query.status = { $ne: BLOG_STATUS.DRAFT };
+        query.status = { $ne: ARTICLE_STATUS.DRAFT };
       }
       const data = await Model.paginate(query, options);
       const dataFeedback = JSON.parse(JSON.stringify(data));

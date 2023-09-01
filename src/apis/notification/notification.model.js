@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import { NOTIFICATION, USER, BLOG } from "../../constants/dbCollection";
+import { NOTIFICATION, USER, ARTICLE } from "../../constants/dbCollection";
 import { NOTIFICATION_STATUS } from "./notification.constants";
 
 const NotificantionSchema = new Schema(
@@ -9,7 +9,7 @@ const NotificantionSchema = new Schema(
     recipient: { type: Schema.Types.ObjectId, ref: USER, required: true },
     title: { type: String },
     content: { type: String },
-    blog: { type: Schema.Types.ObjectId, ref: BLOG },
+    article: { type: Schema.Types.ObjectId, ref: ARTICLE },
     type: { type: String },
     isActive: { type: Boolean, default: true },
     status: { type: String, default: NOTIFICATION_STATUS.SENT },

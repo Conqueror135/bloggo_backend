@@ -18,8 +18,11 @@ export async function findOneById(Model, id, populateOps, lean) {
 
 export function createFindOneFunction(Model, populateOps = null) {
   return async function findOne(req, res) {
+    console.log("hjhdfjdh jdhfjdhf");
     try {
       const { id } = req.params;
+      console.log("hjhdfjdh jdhfjdhf ", id);
+
       const data = await findOneById(Model, id, populateOps, true);
       if (!data) {
         return responseHelper.error(res, null, null, CommonError.NOT_FOUND);
