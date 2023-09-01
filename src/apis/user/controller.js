@@ -214,10 +214,11 @@ export default {
   async findOne(req, res) {
     try {
       const { id } = req.params;
-      const user = await User.findById(id);
+      const user = await User.findById(id).lean();
       if (!user) {
         return responseAction.error(res, 404, "");
       }
+      delete user.password;
       return res.json(user);
     } catch (err) {
       return res.status(500).send(err);

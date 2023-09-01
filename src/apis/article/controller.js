@@ -10,39 +10,12 @@ import { groupBy, extractObjectIds } from "../../utils/dataConverter";
 
 export default {
   findOne: controllerHelper.createFindOneFunction(Model, [{ path: "user", select: "fullname username phone email" }]),
-
-  getAll: async (req, res) => {
-    try {
-      const query = filterRequest(req.query, true);
-      const options = optionsRequest(req.query);
-      if (req.query.limit && req.query.limit === "0") {
-        options.pagination = false;
-      }
-
-      options.populate = [
-        { path: "user", select: "username" },
-        { path: "group", select: "name" },
-      ];
-      if (!query.status) {
-        query.status = { $ne: ARTICLE_STATUS.DRAFT };
-      }
-      const data = await Model.paginate(query, options);
-      const dataFeedback = JSON.parse(JSON.stringify(data));
-
-      if (dataFeedback) {
-        const feebackIds = extractObjectIds(dataFeedback.docs);
-        const dataResources = await Resource.find({ feedback: { $in: feebackIds }, is_deleted: false }).lean();
-        const resourceGroupByFeedback = groupBy(dataResources, "feedback");
-
-        dataFeedback.docs.forEach((item) => {
-          item.resources = resourceGroupByFeedback[item._id];
-        });
-      }
-      return responseHelper.success(res, dataFeedback);
-    } catch (err) {
-      return responseHelper.error(res, err);
-    }
-  },
+  getAll: controllerHelper.createGetAllFunction(
+    Model,
+    null,
+    [{ path: "user", select: "fullname username phone email" }],
+    { updated_at: -1 },
+  ),
   remove: controllerHelper.createRemoveFunction(Model),
   create: controllerHelper.createCreateFunction(Model, Service, true, null, null),
   update: controllerHelper.createUpdateByIdFunction(Model, Service, null, null),
