@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import { ARTICLE, USER, GROUP } from "../../constants/dbCollection";
+import { ARTICLE, USER, CATALOG } from "../../constants/dbCollection";
 
 const { Schema } = mongoose;
 const schema = new Schema(
@@ -11,7 +11,7 @@ const schema = new Schema(
     status: { type: String },
     avatar: { type: String },
     user: { ref: USER, type: mongoose.Schema.Types.ObjectId },
-    group: { ref: GROUP, type: mongoose.Schema.Types.ObjectId },
+    catalog: { ref: CATALOG, type: mongoose.Schema.Types.ObjectId },
     rate_good: { type: Number },
     rate_great: { type: Number },
     rate_bad: { type: Number },

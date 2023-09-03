@@ -38,12 +38,12 @@ export default {
       const { error, value } = Service.validateChangeGroup(req.body);
       if (error) return responseHelper.error(res, error, 400);
 
-      const dataFeedback = await Model.findOneAndUpdate(
+      const dataArticle = await Model.findOneAndUpdate(
         { _id: id },
         { group: value.group },
         { new: true, useFindAndModify: false },
       );
-      return responseHelper.success(res, dataFeedback);
+      return responseHelper.success(res, dataArticle);
     } catch (err) {
       console.log(err);
       return responseHelper.error(res, 500, "Lỗi hệ thống, vui lòng liên hệ qtv!");

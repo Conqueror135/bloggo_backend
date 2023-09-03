@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import { GROUP } from "../../constants/dbCollection";
+import { CATALOG } from "../../constants/dbCollection";
 
 const { Schema } = mongoose;
 const schema = new Schema(
@@ -20,4 +20,4 @@ const schema = new Schema(
 
 schema.plugin(mongoosePaginate);
 
-export default mongoose.model(GROUP, schema);
+export default mongoose.model(CATALOG, schema);
